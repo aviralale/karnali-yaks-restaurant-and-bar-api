@@ -4,6 +4,7 @@ from .models import Category, MenuItem, DietaryTag, MenuVariation
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')
+    ordering = ('order',)
 
 class MenuVariationInline(admin.TabularInline):
     model = MenuVariation

@@ -2,6 +2,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    es_name = models.CharField(max_length=100, blank=True)
     description = models.TextField(blank=True)
     order = models.IntegerField(default=0)
 
@@ -13,7 +14,8 @@ class Category(models.Model):
 
 class DietaryTag(models.Model):
     name = models.CharField(max_length=50)
-    icon = models.CharField(max_length=50)  # For storing icon class/identifier
+    es_name = models.CharField(max_length=50, blank=True)
+    icon = models.CharField(max_length=255)  # For storing icon class/identifier
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -27,9 +29,9 @@ class MenuItem(models.Model):
     ]
     name = models.CharField(max_length=200)
     name_spanish = models.CharField(max_length=200, blank=True)  # For Spanish translations
-    description = models.TextField()
+    description = models.TextField(blank=True)
     description_spanish = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.CharField(max_length=20, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     dietary_tags = models.ManyToManyField(DietaryTag, blank=True)
     spice_level = models.IntegerField(choices=SPICE_LEVELS, null=True, blank=True)

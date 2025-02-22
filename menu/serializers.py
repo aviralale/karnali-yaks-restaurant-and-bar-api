@@ -23,7 +23,7 @@ class MenuItemSerializer(serializers.ModelSerializer):
             'description', 'description_spanish', 
             'price', 'category', 'category_name',
             'dietary_tags', 'variations', 'spice_level',
-            'is_special'
+            'is_special', 'order'
         ]
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -31,4 +31,4 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ['id', 'name', 'description',  'items']
+        fields = ['id', 'name','es_name', 'description',  'items']
